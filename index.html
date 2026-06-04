@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case No. 02-14 — Valentine Division. Subject charged with stealing her heart. Status: GUILTY.">
+    <title>CASE #02-14 — Caught Red Handed</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS CUSTOM PROPERTIES
+           ============================================ */
+        :root {
+            --bg-paper: #F5F0E8;
+            --red-string: #C0392B;
+            --dark-ink: #1A1A2E;
+            --stamp-red: #E74C3C;
+            --yellow-highlight: #F4D03F;
+            --faded-green: #7D9B76;
+            --cork-brown: #8B6914;
+            --cork-dark: #5C4A1E;
+            --manila: #D4C5A0;
+
+            --font-typewriter: 'Courier Prime', 'Courier New', monospace;
+            --font-handwritten: 'Caveat', cursive;
+            --font-detective: 'Special Elite', cursive;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-typewriter);
+            color: var(--dark-ink);
+            background: var(--bg-paper);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============================================
+           KEYFRAME ANIMATIONS
+           ============================================ */
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0) rotate(-12deg) scale(1); }
+            10% { transform: translate(-8px, -4px) rotate(-12deg) scale(1.05); }
+            20% { transform: translate(6px, 3px) rotate(-12deg) scale(1.02); }
+            30% { transform: translate(-4px, -2px) rotate(-12deg) scale(1.03); }
+            40% { transform: translate(3px, 1px) rotate(-12deg) scale(1.01); }
+            50% { transform: translate(-2px, -1px) rotate(-12deg) scale(1); }
+        }
+
+        @keyframes stampSlam {
+            0% { transform: rotate(-25deg) scale(3); opacity: 0; }
+            50% { transform: rotate(-12deg) scale(1.15); opacity: 1; }
+            70% { transform: rotate(-10deg) scale(0.95); opacity: 1; }
+            100% { transform: rotate(-12deg) scale(1); opacity: 1; }
+        }
+
+        @keyframes verdictSlam {
+            0% { transform: rotate(-25deg) scale(4); opacity: 0; }
+            40% { transform: rotate(-5deg) scale(1.1); opacity: 1; }
+            60% { transform: rotate(2deg) scale(0.95); opacity: 1; }
+            80% { transform: rotate(-1deg) scale(1.02); opacity: 1; }
+            100% { transform: rotate(0deg) scale(1); opacity: 1; }
+        }
+
+        @keyframes verdictShake {
+            0%, 100% { transform: translateX(0); }
+            10% { transform: translateX(-10px); }
+            20% { transform: translateX(10px); }
+            30% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            50% { transform: translateX(-5px); }
+            60% { transform: translateX(5px); }
+            70% { transform: translateX(-3px); }
+            80% { transform: translateX(3px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes folderSlideUp {
+            from { transform: translateY(100vh); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes drawString {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes pinBounce {
+            0% { transform: translateY(-100px) rotate(var(--rot, -3deg)); opacity: 0; }
+            60% { transform: translateY(10px) rotate(var(--rot, -3deg)); opacity: 1; }
+            80% { transform: translateY(-5px) rotate(var(--rot, -3deg)); opacity: 1; }
+            100% { transform: translateY(0) rotate(var(--rot, -3deg)); opacity: 1; }
+        }
+
+        @keyframes dropIn {
+            0% { transform: translateY(-200px) rotate(var(--rot, 0deg)); opacity: 0; }
+            60% { transform: translateY(8px) rotate(var(--rot, 0deg)); opacity: 1; }
+            80% { transform: translateY(-4px) rotate(var(--rot, 0deg)); opacity: 1; }
+            100% { transform: translateY(0) rotate(var(--rot, 0deg)); opacity: 1; }
+        }
+
+        @keyframes filmScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes waxSealPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(192, 57, 43, 0.3); }
+            50% { transform: scale(1.03); box-shadow: 0 0 35px rgba(192, 57, 43, 0.5); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(231, 76, 60, 0.2); }
+            50% { box-shadow: 0 0 60px rgba(231, 76, 60, 0.4); }
+        }
+
+        @keyframes folderClose {
+            0% { transform: perspective(800px) rotateX(0deg); }
+            100% { transform: perspective(800px) rotateX(-85deg); transform-origin: bottom; }
+        }
+
+        @keyframes typewriterCursor {
+            0%, 100% { border-right-color: var(--dark-ink); }
+            50% { border-right-color: transparent; }
+        }
+
+        /* ============================================
+           SCREEN 1 — THE CASE FILE COVER
+           ============================================ */
+        .screen {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #screen-cover {
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 28px,
+                    rgba(0,0,0,0.015) 28px,
+                    rgba(0,0,0,0.015) 29px
+                ),
+                linear-gradient(135deg, #D4C5A0 0%, #E8DCC8 30%, #D4C5A0 60%, #C9BA94 100%);
+            overflow: hidden;
+        }
+
+        #screen-cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0,0,0,0.05) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 30%, rgba(0,0,0,0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .folder {
+            position: relative;
+            width: min(600px, 90vw);
+            padding: 60px 40px;
+            text-align: center;
+            animation: folderSlideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .folder-tab {
+            position: absolute;
+            top: -30px;
+            right: 60px;
+            width: 120px;
+            height: 35px;
+            background: linear-gradient(180deg, #C9BA94 0%, #BFB08A 100%);
+            border-radius: 8px 8px 0 0;
+            border: 2px solid rgba(0,0,0,0.1);
+            border-bottom: none;
+        }
+
+        .classified-banner {
+            font-family: var(--font-typewriter);
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: var(--stamp-red);
+            border-top: 3px double var(--stamp-red);
+            border-bottom: 3px double var(--stamp-red);
+            padding: 8px 0;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .case-info {
+            font-family: var(--font-typewriter);
+            font-size: clamp(0.85rem, 2vw, 1.05rem);
+            line-height: 2.2;
+            color: var(--dark-ink);
+            text-align: left;
+            max-width: 420px;
+            margin: 0 auto 30px;
+        }
+
+        .case-info span {
+            display: block;
+        }
+
+        .case-info .label {
+            color: rgba(26, 26, 46, 0.5);
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .case-info .value {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .case-info .status {
+            color: var(--stamp-red);
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .guilty-stamp {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-12deg) scale(3);
+            font-family: var(--font-detective);
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: var(--stamp-red);
+            border: 6px solid var(--stamp-red);
+            padding: 10px 30px;
+            border-radius: 8px;
+            opacity: 0;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            animation: stampSlam 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1.5s forwards;
+            z-index: 10;
+            /* Stamp texture */
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(231,76,60,0.05) 2px, rgba(231,76,60,0.05) 4px);
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .wax-seal {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 40% 40%, #D44A3A, #8B1A1A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 4px 15px rgba(0,0,0,0.3),
+                inset 0 2px 4px rgba(255,255,255,0.2),
+                inset 0 -2px 4px rgba(0,0,0,0.2);
+            animation: waxSealPulse 2s ease-in-out infinite;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .wax-seal::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+        }
+
+        .wax-seal-text {
+            font-family: var(--font-detective);
+            font-size: 0.5rem;
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-handwritten);
+            font-size: 1rem;
+            color: rgba(26,26,46,0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           SCREEN 2 — THE EVIDENCE BOARD
+           ============================================ */
+        #screen-evidence {
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 18px,
+                    rgba(0,0,0,0.03) 18px,
+                    rgba(0,0,0,0.03) 19px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 18px,
+                    rgba(0,0,0,0.03) 18px,
+                    rgba(0,0,0,0.03) 19px
+                ),
+                radial-gradient(ellipse at center, #8B6914 0%, #6B4F0E 50%, #4A3508 100%);
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: block;
+        }
+
+        .evidence-title {
+            font-family: var(--font-detective);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .evidence-board {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 600px;
+        }
+
+        .evidence-photo {
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+        }
+
+        .evidence-photo.animate-in {
+            animation: pinBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .evidence-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-frame {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.4),
+                0 1px 3px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .thumbtack {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 40% 40%, #E74C3C, #8B1A1A);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            z-index: 5;
+        }
+
+        .thumbtack::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
+        .sticky-note {
+            font-family: var(--font-handwritten);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--dark-ink);
+            background: linear-gradient(180deg, #FFF9C4 0%, #FFF59D 100%);
+            padding: 12px 15px;
+            box-shadow: 2px 3px 8px rgba(0,0,0,0.2);
+            transform: rotate(var(--note-rot, 2deg));
+            margin-top: 10px;
+            max-width: 220px;
+            line-height: 1.4;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .evidence-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 300px;
+            }
+        }
+
+        .evidence-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .evidence-item:nth-child(1) { --rot: -3deg; --note-rot: 2deg; }
+        .evidence-item:nth-child(2) { --rot: 2deg; --note-rot: -1deg; }
+        .evidence-item:nth-child(3) { --rot: -1deg; --note-rot: 3deg; }
+
+        .evidence-item .photo-frame {
+            transform: rotate(var(--rot, 0deg));
+        }
+
+        /* Red string SVG overlay */
+        .red-string-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .red-string-svg path {
+            fill: none;
+            stroke: var(--red-string);
+            stroke-width: 2;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+
+        .red-string-svg.animate path {
+            animation: drawString 2s ease-in-out forwards;
+        }
+
+        /* Extra evidence items */
+        .evidence-extras {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .fingerprint-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 4px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .fingerprint-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .fingerprint-text {
+            font-family: var(--font-typewriter);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .torn-paper {
+            background: var(--bg-paper);
+            padding: 20px 30px;
+            font-family: var(--font-handwritten);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--dark-ink);
+            position: relative;
+            box-shadow: 3px 4px 12px rgba(0,0,0,0.3);
+            max-width: 320px;
+            line-height: 1.5;
+            /* Torn paper edge effect */
+            clip-path: polygon(
+                0% 3%, 5% 0%, 12% 2%, 20% 0%, 28% 3%, 35% 1%, 42% 4%, 50% 0%, 
+                58% 3%, 65% 1%, 72% 4%, 80% 0%, 88% 2%, 95% 0%, 100% 3%,
+                100% 97%, 95% 100%, 88% 98%, 80% 100%, 72% 97%, 65% 99%, 58% 96%, 
+                50% 100%, 42% 97%, 35% 99%, 28% 96%, 20% 100%, 12% 98%, 5% 100%, 0% 97%
+            );
+        }
+
+        .magnifying-glass {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.7;
+            transform: rotate(15deg);
+            z-index: 10;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+        }
+
+        /* ============================================
+           SCREEN 3 — THE WITNESS STATEMENT
+           ============================================ */
+        #screen-witness {
+            background: 
+                linear-gradient(180deg, rgba(0,0,0,0.02) 0%, transparent 2px) 0 0 / 100% 28px,
+                radial-gradient(ellipse at center, #F5F0E8 0%, #E8E0D0 100%);
+            padding: 80px 20px;
+            display: block;
+        }
+
+        .witness-document {
+            max-width: 700px;
+            margin: 0 auto;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 27px,
+                    rgba(0,0,0,0.04) 27px,
+                    rgba(0,0,0,0.04) 28px
+                ),
+                linear-gradient(135deg, #FEFCF5 0%, #F5EFE0 100%);
+            padding: 60px 50px;
+            box-shadow: 
+                0 2px 20px rgba(0,0,0,0.1),
+                0 0 0 1px rgba(0,0,0,0.05),
+                8px 8px 0 rgba(0,0,0,0.03);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .witness-document {
+                padding: 40px 25px;
+            }
+        }
+
+        .witness-document::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(192, 57, 43, 0.15);
+        }
+
+        .witness-header {
+            font-family: var(--font-typewriter);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .witness-header h2 {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--dark-ink);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .witness-header .sub-info {
+            font-size: 0.85rem;
+            color: rgba(26,26,46,0.6);
+            line-height: 1.8;
+        }
+
+        .typewriter-text {
+            font-family: var(--font-typewriter);
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            line-height: 2;
+            color: var(--dark-ink);
+            margin-top: 30px;
+            min-height: 200px;
+        }
+
+        .typewriter-text .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.1em;
+            background: var(--dark-ink);
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        .signature-area {
+            margin-top: 50px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .signature-area.visible {
+            opacity: 1;
+        }
+
+        .signature-line {
+            width: 200px;
+            border-bottom: 1px solid var(--dark-ink);
+            margin: 0 auto 5px;
+            padding-bottom: 5px;
+            font-family: var(--font-handwritten);
+            font-size: 1.5rem;
+            color: var(--dark-ink);
+        }
+
+        .signature-label {
+            font-family: var(--font-typewriter);
+            font-size: 0.7rem;
+            color: rgba(26,26,46,0.5);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .heart-stamp {
+            display: inline-block;
+            margin-top: 25px;
+            font-family: var(--font-detective);
+            font-size: 0.8rem;
+            color: var(--stamp-red);
+            border: 3px solid var(--stamp-red);
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.3;
+            transform: rotate(-8deg);
+            margin: 25px auto 0;
+            background: repeating-linear-gradient(
+                45deg, transparent, transparent 2px, 
+                rgba(231,76,60,0.03) 2px, rgba(231,76,60,0.03) 4px
+            );
+        }
+
+        /* ============================================
+           SCREEN 4 — EXHIBIT GALLERY
+           ============================================ */
+        #screen-exhibits {
+            background: var(--bg-paper);
+            padding: 80px 20px;
+            display: block;
+            position: relative;
+        }
+
+        .exhibit-stamp {
+            font-family: var(--font-detective);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            text-align: center;
+            color: var(--stamp-red);
+            border: 4px solid var(--stamp-red);
+            display: inline-block;
+            padding: 8px 25px;
+            transform: rotate(-2deg);
+            margin: 0 auto 60px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: repeating-linear-gradient(
+                45deg, transparent, transparent 2px, 
+                rgba(231,76,60,0.03) 2px, rgba(231,76,60,0.03) 4px
+            );
+        }
+
+        .exhibit-stamp-wrapper {
+            text-align: center;
+        }
+
+        .exhibit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .exhibit-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+            }
+        }
+
+        .exhibit-item {
+            position: relative;
+            opacity: 0;
+        }
+
+        .exhibit-item.animate-in {
+            animation: dropIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .exhibit-item:nth-child(1) { --rot: -2deg; animation-delay: 0.1s; }
+        .exhibit-item:nth-child(2) { --rot: 1.5deg; animation-delay: 0.3s; }
+        .exhibit-item:nth-child(3) { --rot: -1deg; animation-delay: 0.5s; }
+        .exhibit-item:nth-child(4) { --rot: 2.5deg; animation-delay: 0.7s; }
+
+        .exhibit-frame {
+            background: white;
+            padding: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transform: rotate(var(--rot, 0deg));
+            position: relative;
+        }
+
+        .exhibit-frame img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .exhibit-label {
+            font-family: var(--font-typewriter);
+            font-size: 0.75rem;
+            text-align: center;
+            padding-top: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(26,26,46,0.6);
+        }
+
+        .evidence-sticker {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--stamp-red);
+            color: white;
+            font-family: var(--font-typewriter);
+            font-size: 0.6rem;
+            padding: 4px 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transform: rotate(3deg);
+            z-index: 3;
+        }
+
+        .highlight-mark {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 30px;
+            background: rgba(244, 208, 63, 0.35);
+            transform: rotate(-2deg) translateY(-50%);
+            z-index: 2;
+        }
+
+        .highlight-text {
+            position: absolute;
+            bottom: 60px;
+            right: 20px;
+            font-family: var(--font-handwritten);
+            font-size: 1.2rem;
+            color: var(--stamp-red);
+            transform: rotate(-5deg);
+            z-index: 4;
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+        }
+
+        /* ============================================
+           SCREEN 5 — THE VERDICT
+           ============================================ */
+        #screen-verdict {
+            background: 
+                radial-gradient(ellipse at center, rgba(231,76,60,0.15) 0%, transparent 70%),
+                linear-gradient(135deg, var(--red-string) 0%, #962D22 50%, #7D2519 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #screen-verdict::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+            pointer-events: none;
+        }
+
+        .verdict-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .verdict-stamp {
+            font-family: var(--font-detective);
+            color: white;
+            margin-bottom: 30px;
+            opacity: 0;
+        }
+
+        .verdict-stamp.animate-in {
+            animation: verdictSlam 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+        }
+
+        .verdict-stamp .label {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .verdict-stamp .guilty-text {
+            font-size: clamp(4rem, 12vw, 8rem);
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .verdict-stamp .sub-text {
+            font-family: var(--font-typewriter);
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        .verdict-stamp .sentence {
+            font-family: var(--font-handwritten);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--yellow-highlight);
+            margin-top: 10px;
+        }
+
+        .verdict-message {
+            font-family: var(--font-handwritten);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: rgba(255,255,255,0.8);
+            margin: 30px 0;
+            opacity: 0;
+            transition: opacity 1.5s ease 1s;
+        }
+
+        .verdict-message.visible {
+            opacity: 1;
+        }
+
+        .verdict-photo {
+            width: min(350px, 80vw);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1.5s ease 1.5s;
+            position: relative;
+        }
+
+        .verdict-photo.visible {
+            opacity: 1;
+        }
+
+        .verdict-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+        }
+
+        .verdict-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ============================================
+           SCREEN 6 — CASE CLOSED
+           ============================================ */
+        #screen-closed {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .folder-closing {
+            width: min(500px, 85vw);
+            height: 300px;
+            perspective: 800px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .folder-back {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #B8A67A 0%, #D4C5A0 50%, #B8A67A 100%);
+            border-radius: 4px;
+            position: absolute;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .folder-front {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #C9BA94 0%, #DDD0B0 50%, #C9BA94 100%);
+            border-radius: 4px;
+            position: absolute;
+            transform-origin: bottom center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .folder-front .case-closed-text {
+            font-family: var(--font-detective);
+            font-size: 1.2rem;
+            color: var(--stamp-red);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border: 3px solid var(--stamp-red);
+            padding: 8px 20px;
+            transform: rotate(-5deg);
+        }
+
+        .closed-text {
+            font-family: var(--font-typewriter);
+            color: rgba(255,255,255,0.85);
+            line-height: 2.2;
+            font-size: clamp(0.85rem, 2vw, 1.05rem);
+            margin-bottom: 50px;
+            max-width: 400px;
+        }
+
+        .closed-text .status-line {
+            font-size: 1.3em;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .closed-text .reason {
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+        }
+
+        .closed-text .filed {
+            color: var(--yellow-highlight);
+            font-family: var(--font-handwritten);
+            font-size: 1.3em;
+        }
+
+        .closed-text .signature {
+            color: rgba(255,255,255,0.5);
+            margin-top: 15px;
+            display: block;
+        }
+
+        .closed-heart {
+            color: var(--stamp-red);
+        }
+
+        /* Film Strip */
+        .film-strip-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .film-strip-container::before,
+        .film-strip-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 3;
+        }
+
+        .film-strip-container::before {
+            left: 0;
+            background: linear-gradient(90deg, #0a0a0a, transparent);
+        }
+
+        .film-strip-container::after {
+            right: 0;
+            background: linear-gradient(-90deg, #0a0a0a, transparent);
+        }
+
+        .film-strip {
+            display: flex;
+            gap: 0;
+            animation: filmScroll 20s linear infinite;
+            width: max-content;
+        }
+
+        .film-frame {
+            position: relative;
+            width: 180px;
+            height: 130px;
+            flex-shrink: 0;
+            background: #111;
+            border-left: 4px solid #222;
+            border-right: 4px solid #222;
+        }
+
+        .film-frame::before,
+        .film-frame::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 18px;
+            background: #111;
+            z-index: 2;
+        }
+
+        .film-frame::before { top: 0; }
+        .film-frame::after { bottom: 0; }
+
+        .film-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .film-sprocket {
+            position: absolute;
+            width: 10px;
+            height: 8px;
+            background: #333;
+            border-radius: 1px;
+            z-index: 3;
+        }
+
+        /* Sprocket positions */
+        .sprocket-tl { top: 5px; left: 8px; }
+        .sprocket-tr { top: 5px; right: 8px; }
+        .sprocket-bl { bottom: 5px; left: 8px; }
+        .sprocket-br { bottom: 5px; right: 8px; }
+        .sprocket-ml { top: 5px; left: 28px; }
+        .sprocket-mr { top: 5px; right: 28px; }
+        .sprocket-ml2 { bottom: 5px; left: 28px; }
+        .sprocket-mr2 { bottom: 5px; right: 28px; }
+
+        /* ============================================
+           RESPONSIVE ADJUSTMENTS
+           ============================================ */
+        @media (max-width: 768px) {
+            .folder {
+                padding: 40px 25px;
+            }
+
+            .guilty-stamp {
+                font-size: clamp(2rem, 10vw, 3.5rem);
+                padding: 8px 20px;
+                border-width: 4px;
+            }
+
+            .evidence-extras {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .witness-document::before {
+                left: 30px;
+            }
+
+            .film-frame {
+                width: 140px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .folder {
+                padding: 30px 20px;
+            }
+
+            .classified-banner {
+                letter-spacing: 4px;
+                font-size: 0.9rem;
+            }
+
+            .wax-seal {
+                width: 80px;
+                height: 80px;
+                bottom: 50px;
+            }
+
+            .wax-seal::before {
+                width: 65px;
+                height: 65px;
+            }
+
+            .wax-seal-text {
+                font-size: 0.4rem;
+            }
+        }
+
+        /* ============================================
+           CUSTOM SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-paper);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--manila);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--cork-brown);
+        }
+
+        /* ============================================
+           LOADING SCREEN
+           ============================================ */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--dark-ink);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-text {
+            font-family: var(--font-detective);
+            color: var(--stamp-red);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .loading-dots::after {
+            content: '';
+            animation: loadingDots 1.5s step-end infinite;
+        }
+
+        @keyframes loadingDots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-text">Opening Case File<span class="loading-dots"></span></div>
+    </div>
+
+    <!-- ============================================
+         SCREEN 1 — THE CASE FILE COVER
+         ============================================ -->
+    <section class="screen" id="screen-cover">
+        <div class="folder">
+            <div class="folder-tab"></div>
+
+            <div class="classified-banner">⚠ CLASSIFIED ⚠</div>
+
+            <div class="case-info">
+                <span class="label">Case No.</span>
+                <span class="value">02-14</span>
+
+                <span class="label">Division</span>
+                <span class="value">Valentine Division</span>
+
+                <span class="label">Subject</span>
+                <span class="value">[His Name]</span>
+
+                <span class="label">Charge</span>
+                <span class="value">Stealing her heart</span>
+
+                <span class="label">Status</span>
+                <span class="value status">GUILTY ♥</span>
+            </div>
+
+            <div class="guilty-stamp">GUILTY</div>
+        </div>
+
+        <div class="wax-seal" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+            <span class="wax-seal-text">OPEN AT<br>YOUR OWN<br>RISK</span>
+        </div>
+
+        <div class="scroll-hint">↓ scroll down ↓</div>
+    </section>
+
+    <!-- ============================================
+         SCREEN 2 — THE EVIDENCE BOARD
+         ============================================ -->
+    <section class="screen" id="screen-evidence">
+        <div style="width: 100%;">
+            <h2 class="evidence-title" data-aos="fade-down">— Evidence Board —</h2>
+
+            <div class="evidence-grid" id="evidenceGrid">
+                <!-- Red string SVG -->
+                <svg class="red-string-svg" id="redStringSvg" viewBox="0 0 900 400" preserveAspectRatio="none">
+                    <path d="" id="stringPath1"/>
+                    <path d="" id="stringPath2"/>
+                </svg>
+
+                <div class="evidence-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="evidence-photo">
+                        <div class="photo-frame">
+                            <div class="thumbtack"></div>
+                            <img src="photos/photo1.jpg" alt="Evidence A" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="sticky-note" style="--note-rot: 2deg;">
+                        "Evidence A: that smile. dangerous."
+                    </div>
+                </div>
+
+                <div class="evidence-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="evidence-photo">
+                        <div class="photo-frame">
+                            <div class="thumbtack"></div>
+                            <img src="photos/photo2.jpg" alt="Evidence B" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="sticky-note" style="--note-rot: -1deg;">
+                        "Evidence B: caught being too cute"
+                    </div>
+                    <div class="magnifying-glass" style="top: -20px; right: -15px;">🔍</div>
+                </div>
+
+                <div class="evidence-item" data-aos="fade-up" data-aos-delay="800">
+                    <div class="evidence-photo">
+                        <div class="photo-frame">
+                            <div class="thumbtack"></div>
+                            <img src="photos/photo3.png" alt="Evidence C" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="sticky-note" style="--note-rot: 3deg;">
+                        "Evidence C: made her laugh again. unacceptable."
+                    </div>
+                </div>
+            </div>
+
+            <div class="evidence-extras">
+                <div class="fingerprint-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="fingerprint-icon">🔎</div>
+                    <div style="font-size: 3rem; margin-bottom: 10px;">
+                        <svg width="60" height="70" viewBox="0 0 60 70" style="opacity: 0.7;">
+                            <g fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5">
+                                <path d="M30 5 C15 5, 5 18, 5 35 C5 52, 15 65, 30 65 C45 65, 55 52, 55 35 C55 18, 45 5, 30 5"/>
+                                <path d="M30 12 C20 12, 12 22, 12 35 C12 48, 20 58, 30 58 C40 58, 48 48, 48 35 C48 22, 40 12, 30 12"/>
+                                <path d="M30 19 C24 19, 19 26, 19 35 C19 44, 24 51, 30 51 C36 51, 41 44, 41 35 C41 26, 36 19, 30 19"/>
+                                <path d="M30 26 C27 26, 25 30, 25 35 C25 40, 27 44, 30 44 C33 44, 35 40, 35 35 C35 30, 33 26, 30 26"/>
+                                <circle cx="30" cy="35" r="2"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="fingerprint-text">Identity Confirmed</div>
+                </div>
+
+                <div class="torn-paper" data-aos="fade-up" data-aos-delay="500">
+                    <em>"motive: unknown.<br>effect: everything."</em>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SCREEN 3 — THE WITNESS STATEMENT
+         ============================================ -->
+    <section class="screen" id="screen-witness">
+        <div class="witness-document" data-aos="fade-up">
+            <div class="witness-header">
+                <h2>Official Witness Statement</h2>
+                <div class="sub-info">
+                    Valentine Division — Case #02-14<br>
+                    Witness: [Her Name]<br>
+                    Date: February 14
+                </div>
+            </div>
+
+            <div class="typewriter-text" id="typewriterText">
+                <span class="cursor" id="typewriterCursor"></span>
+            </div>
+
+            <div class="signature-area" id="signatureArea">
+                <div class="signature-line">[Her Name]</div>
+                <div class="signature-label">Witness Signature</div>
+                <div class="heart-stamp">
+                    SEALED<br>WITH<br>LOVE ♥
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SCREEN 4 — EXHIBIT GALLERY
+         ============================================ -->
+    <section class="screen" id="screen-exhibits">
+        <div style="width: 100%;">
+            <div class="exhibit-stamp-wrapper">
+                <div class="exhibit-stamp" data-aos="zoom-in">Exhibit Files</div>
+            </div>
+
+            <div class="exhibit-grid" id="exhibitGrid">
+                <div class="exhibit-item" data-aos="fade-down" data-aos-delay="100">
+                    <div class="exhibit-frame">
+                        <div class="evidence-sticker">Evidence</div>
+                        <img src="photos/photo1.jpg" alt="Exhibit A" loading="lazy">
+                        <div class="exhibit-label">Exhibit A</div>
+                    </div>
+                </div>
+
+                <div class="exhibit-item" data-aos="fade-down" data-aos-delay="300">
+                    <div class="exhibit-frame">
+                        <div class="evidence-sticker">Evidence</div>
+                        <img src="photos/photo3.png" alt="Exhibit B" loading="lazy">
+                        <div class="exhibit-label">Exhibit B</div>
+                    </div>
+                </div>
+
+                <div class="exhibit-item" data-aos="fade-down" data-aos-delay="500">
+                    <div class="exhibit-frame">
+                        <div class="evidence-sticker">Evidence</div>
+                        <img src="photos/photo4.png" alt="Exhibit C" loading="lazy">
+                        <div class="exhibit-label">Exhibit C</div>
+                    </div>
+                </div>
+
+                <div class="exhibit-item" data-aos="fade-down" data-aos-delay="700">
+                    <div class="exhibit-frame">
+                        <div class="evidence-sticker">Evidence</div>
+                        <div class="highlight-mark"></div>
+                        <div class="highlight-text">favorite one ♥</div>
+                        <img src="photos/photo5.png" alt="Exhibit D" loading="lazy">
+                        <div class="exhibit-label">Exhibit D</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SCREEN 5 — THE VERDICT
+         ============================================ -->
+    <section class="screen" id="screen-verdict">
+        <div class="verdict-container">
+            <div class="verdict-stamp" id="verdictStamp">
+                <div class="label">Verdict:</div>
+                <div class="guilty-text">GUILTY</div>
+                <div class="sub-text">of making her fall in love.</div>
+                <div class="sentence">Sentence: forever. ♥</div>
+            </div>
+
+            <div class="verdict-message" id="verdictMessage">
+                "Happy Valentine's Day. You're stuck with me now."
+            </div>
+
+            <div class="verdict-photo" id="verdictPhoto">
+                <img src="photos/photo4.png" alt="Us" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SCREEN 6 — CASE CLOSED
+         ============================================ -->
+    <section class="screen" id="screen-closed">
+        <div class="folder-closing" data-aos="fade-up">
+            <div class="folder-back"></div>
+            <div class="folder-front" id="folderFront">
+                <div class="case-closed-text">Case Closed</div>
+            </div>
+        </div>
+
+        <div class="closed-text" data-aos="fade-up" data-aos-delay="400">
+            <span class="status-line">Case Status: Closed</span>
+            <span class="reason">
+                Reason: No cure found.<br>
+                No cure needed.
+            </span>
+            <br><br>
+            <span class="filed">Filed under: forever yours</span>
+            <br>
+            Date: Valentine's Day, always
+            <span class="signature">— [Her Name] <span class="closed-heart">♥</span></span>
+        </div>
+
+        <!-- Film Strip -->
+        <div class="film-strip-container">
+            <div class="film-strip" id="filmStrip">
+                <!-- Frames will be duplicated by JS for infinite scroll -->
+            </div>
+        </div>
+    </section>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hide loading screen after fonts/images load
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').classList.add('hidden');
+                }, 800);
+            });
+
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 100
+            });
+
+            // Initialize all features
+            initTypewriter();
+            initFilmStrip();
+            initVerdictObserver();
+            initFolderAnimation();
+            initRedStringAnimation();
+        });
+
+        // ============================================
+        // TYPEWRITER EFFECT — Screen 3
+        // ============================================
+        function initTypewriter() {
+            const text = `I, [Her Name], hereby confirm that the subject known as [His Name] did willfully and repeatedly cause uncontrollable smiling, excessive butterflies, and complete heart malfunction.\n\nFrom the very first moment, it was clear that the subject possessed an unfair advantage — a combination of warmth, humor, and charm that left no reasonable defense.\n\nThe evidence is overwhelming. The effect is irreversible.\n\nI have no desire to press charges. In fact, I would like him to continue. Indefinitely.`;
+
+            const container = document.getElementById('typewriterText');
+            const cursor = document.getElementById('typewriterCursor');
+            const signatureArea = document.getElementById('signatureArea');
+            let charIndex = 0;
+            let hasStarted = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasStarted) {
+                        hasStarted = true;
+                        typeNextChar();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(container);
+
+            function typeNextChar() {
+                if (charIndex < text.length) {
+                    const char = text[charIndex];
+                    if (char === '\n') {
+                        container.insertBefore(document.createElement('br'), cursor);
+                    } else {
+                        const span = document.createTextNode(char);
+                        container.insertBefore(span, cursor);
+                    }
+                    charIndex++;
+
+                    // Variable typing speed for realism
+                    const delay = char === '.' ? 200 : 
+                                  char === ',' ? 100 : 
+                                  char === '\n' ? 300 :
+                                  char === ' ' ? 40 :
+                                  25 + Math.random() * 30;
+                    setTimeout(typeNextChar, delay);
+                } else {
+                    // Typing done — show signature
+                    cursor.style.display = 'none';
+                    signatureArea.classList.add('visible');
+                }
+            }
+        }
+
+        // ============================================
+        // RED STRING ANIMATION — Screen 2
+        // ============================================
+        function initRedStringAnimation() {
+            const svg = document.getElementById('redStringSvg');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Calculate string paths based on grid layout
+                        updateStringPaths();
+                        setTimeout(() => {
+                            svg.classList.add('animate');
+                        }, 1000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(document.getElementById('evidenceGrid'));
+        }
+
+        function updateStringPaths() {
+            const grid = document.getElementById('evidenceGrid');
+            const items = grid.querySelectorAll('.evidence-item');
+            const svgEl = document.getElementById('redStringSvg');
+            
+            if (items.length < 3) return;
+
+            const gridRect = grid.getBoundingClientRect();
+            const svgWidth = 900;
+            const svgHeight = 400;
+
+            function getCenter(el) {
+                const rect = el.querySelector('.photo-frame').getBoundingClientRect();
+                return {
+                    x: ((rect.left + rect.width / 2 - gridRect.left) / gridRect.width) * svgWidth,
+                    y: ((rect.top + rect.height / 2 - gridRect.top) / gridRect.height) * svgHeight
+                };
+            }
+
+            const p1 = getCenter(items[0]);
+            const p2 = getCenter(items[1]);
+            const p3 = getCenter(items[2]);
+
+            // Curved paths between photos
+            const path1 = document.getElementById('stringPath1');
+            const path2 = document.getElementById('stringPath2');
+
+            const mid1 = { x: (p1.x + p2.x) / 2, y: Math.min(p1.y, p2.y) - 30 };
+            const mid2 = { x: (p2.x + p3.x) / 2, y: Math.min(p2.y, p3.y) - 30 };
+
+            path1.setAttribute('d', `M ${p1.x} ${p1.y} Q ${mid1.x} ${mid1.y} ${p2.x} ${p2.y}`);
+            path2.setAttribute('d', `M ${p2.x} ${p2.y} Q ${mid2.x} ${mid2.y} ${p3.x} ${p3.y}`);
+        }
+
+        // ============================================
+        // VERDICT ANIMATION — Screen 5
+        // ============================================
+        function initVerdictObserver() {
+            const stamp = document.getElementById('verdictStamp');
+            const message = document.getElementById('verdictMessage');
+            const photo = document.getElementById('verdictPhoto');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stamp.classList.add('animate-in');
+                        
+                        // Shake the screen
+                        setTimeout(() => {
+                            document.getElementById('screen-verdict').style.animation = 'verdictShake 0.6s ease';
+                            setTimeout(() => {
+                                document.getElementById('screen-verdict').style.animation = '';
+                            }, 600);
+                        }, 700);
+
+                        // Show message and photo
+                        setTimeout(() => message.classList.add('visible'), 1500);
+                        setTimeout(() => photo.classList.add('visible'), 2000);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+
+            observer.observe(stamp);
+        }
+
+        // ============================================
+        // FOLDER CLOSE ANIMATION — Screen 6
+        // ============================================
+        function initFolderAnimation() {
+            const folder = document.getElementById('folderFront');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            folder.style.transition = 'transform 2s cubic-bezier(0.4, 0, 0.2, 1)';
+                            folder.style.transformOrigin = 'bottom center';
+                            folder.style.transform = 'perspective(800px) rotateX(-80deg)';
+                        }, 500);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(folder);
+        }
+
+        // ============================================
+        // FILM STRIP — Screen 6
+        // ============================================
+        function initFilmStrip() {
+            const strip = document.getElementById('filmStrip');
+            const photos = [
+                'photos/photo1.jpg',
+                'photos/photo2.jpg',
+                'photos/photo3.png',
+                'photos/photo4.png',
+                'photos/photo5.png'
+            ];
+
+            // Create frames (duplicate for seamless loop)
+            function createFrames() {
+                const fragment = document.createDocumentFragment();
+                photos.forEach(src => {
+                    const frame = document.createElement('div');
+                    frame.className = 'film-frame';
+                    frame.innerHTML = `
+                        <div class="film-sprocket sprocket-tl"></div>
+                        <div class="film-sprocket sprocket-tr"></div>
+                        <div class="film-sprocket sprocket-bl"></div>
+                        <div class="film-sprocket sprocket-br"></div>
+                        <div class="film-sprocket sprocket-ml"></div>
+                        <div class="film-sprocket sprocket-mr"></div>
+                        <div class="film-sprocket sprocket-ml2"></div>
+                        <div class="film-sprocket sprocket-mr2"></div>
+                        <img src="${src}" alt="Memory" loading="lazy">
+                    `;
+                    fragment.appendChild(frame);
+                });
+                return fragment;
+            }
+
+            // Add frames 4x for seamless scrolling
+            for (let i = 0; i < 4; i++) {
+                strip.appendChild(createFrames());
+            }
+        }
+
+        // ============================================
+        // PARALLAX-LIKE SCROLL EFFECTS
+        // ============================================
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    // Update string paths on scroll/resize
+                    if (document.getElementById('redStringSvg').classList.contains('animate')) {
+                        updateStringPaths();
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Recalculate string on resize
+        window.addEventListener('resize', () => {
+            if (document.getElementById('redStringSvg').classList.contains('animate')) {
+                updateStringPaths();
+            }
+        });
+    </script>
+
+</body>
+</html>
